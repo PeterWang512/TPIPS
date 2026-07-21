@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="TPIPS: Text-Prompted Image Perceptual Similarity. A vision-language model that judges image similarity along a text-specified aspect (color, pose, lighting, ...)." />
+  <meta name="keywords" content="perceptual similarity, LPIPS, DreamSim, vision-language model, VLM, retrieval, TPIPS" />
+
+  <title>TPIPS: The Many Senses of Visual Similarity</title>
+
+  <!-- Social preview (TODO: replace once we have a real preview image) -->
+  <meta property="og:title" content="The Many Senses of Visual Similarity" />
+  <meta property="og:description" content="A text-prompted image perceptual similarity metric (TPIPS) that goes beyond a single scalar distance." />
+  <meta property="og:image" content="static/images/og_preview.png" />
+
+  <!-- Bulma + FontAwesome CDN (matches Nerfies template) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" />
+
+
+  <link rel="stylesheet" href="static/css/site.css" />
+</head>
+
+<body>
+
+  <!-- =================== Header =================== -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">
+              The Many Senses of Visual Similarity:<br />
+              A Text-Prompted Image Perceptual Metric
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://peterwang512.github.io/" target="_blank">Sheng-Yu Wang</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://yotamnitzan.github.io/" target="_blank">Yotam Nitzan</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.dgp.toronto.edu/~hertzman/" target="_blank">Aaron Hertzmann</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.cs.cmu.edu/~junyanz/" target="_blank">Jun-Yan Zhu</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://research.adobe.com/person/eli-shechtman/" target="_blank">Eli Shechtman</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://people.eecs.berkeley.edu/~efros/" target="_blank">Alexei A. Efros</a><sup>3</sup>,</span>
+              <span class="author-block"><a href="https://richzhang.github.io/" target="_blank">Richard Zhang</a><sup>2</sup></span>
+
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>
+              <span class="author-block"><sup>2</sup>Adobe Research</span>
+              <span class="author-block"><sup>3</sup>UC Berkeley</span>
+            </div>
+
+            <div class="publication-links">
+              <!-- TODO: real URLs -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <span>Paper [arXiv]</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span><span>Code (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-database"></i></span><span>Data (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#x1F917;</span><span>Demo (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-quote-right"></i></span><span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+
+            <!-- <p class="publication-blurb">
+              We introduce Text-Prompted Image Perceptual Similarity <strong>(TPIPS)</strong>: a similarity metric you can <em>condition on a
+              text-specified visual aspect</em>.
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== Teaser =================== -->
+  <section class="section" id="teaser">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">We introduce <span style="color: #a40052;">TPIPS</span>: an image similarity metric that is <em>text-conditioned</em>.</h2>
+
+
+      <div id="teaser-root">
+        <!-- populated by static/js/teaser.js -->
+        <div class="loading-state">Loading teaser&hellip;</div>
+      </div>
+      <p>
+        A single scalar distance cannot say <em>how</em> two images are alike. A reference is
+        compared against fixed candidates A/B/C/&hellip;: prior methods (LPIPS, DreamSim, SSIM, L2)
+        each pick one candidate <em>overall</em>, while <strong>TPIPS</strong> picks a different
+        one per text aspect. <strong>Hover any method or aspect</strong> (tap on mobile) to see its
+        per-candidate scores on the gauges beside each image; click an image to zoom.
+      </p>
+    </div>
+  </section>
+
+  <!-- =================== Quick Start ====================-->
+  <section class="section" id="quick-start">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">"pip install tpips" (Coming Soon!)</h2>
+      <p class="section-blurb">
+        pip install package and code release will be out soon. Stay tuned!
+      </p>
+    </div>
+  </section>
+
+  <!-- =================== Aspect-conditioned retrieval =================== -->
+  <section class="section" id="aspect-retrieval">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Aspect-Conditioned Retrieval</h2>
+      <p class="section-blurb">
+        Given a query photo, we apply <strong>TPIPS</strong> to retrieve its nearest neighbors conditioned on different visual aspects.
+        Retrieval is done from OpenImages, a dataset of 1.74M
+        real-world images. Conditioning on <em>overall</em> recovers ordinary overall similarity.
+        To encourage retrieval diversity, we adjust the 
+        ranking score by subtracting 0.3 of the overall similarity from the aspect similarity.
+        Use the arrows to switch queries; click any image to zoom.
+      </p>
+
+      <div id="aspect-retrieval-root">
+        <!-- populated by static/js/aspect_retrieval.js -->
+        <div class="loading-state">Loading retrieval&hellip;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== Video demo =================== -->
+  <section class="section" id="video-demo">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Similarity on a video</h2>
+      <p class="section-blurb">
+        The same aspect-conditioned similarity extends to video: pick a clip, pick a
+        factor, and pick a reference frame &mdash; the curve shows how similar every
+        other frame is to that reference along the chosen aspect, and updates live as
+        the video plays.
+      </p>
+
+      <div id="video-demo-root">
+        <!-- populated by static/js/video_demo.js -->
+        <div class="loading-state">Loading video demo&hellip;</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =================== How it works =================== -->
+  <section class="section" id="how">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">How it works</h2>
+
+      <div class="how-subsection">
+        <h3 class="title is-4">1. Collect aspect-conditioned similarity from humans</h3>
+        <p>
+          To train a text-conditioned similarity model, we curate triplets of synthetic images and ask 5 different annotators an odd-one-out question for each visual aspect.
+          To test generalization, a second smaller held-out set covers outputs from external
+          algorithms&mdash;image editing, compositing, novel-view synthesis and image-to-3D&mdash;annotated with a 2AFC protocol.
+        </p>
+        <figure class="figure">
+          <img src="static/figures/dataset.jpg" alt="Dataset collection figure" />
+          <figcaption>
+            <strong>Datasets.</strong> (left) Odd-one-out judgments on synthetic triplets. (right) 2AFC judgments on outputs of external vision algorithms.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="how-subsection">
+        <h3 class="title is-4">2. Learn aspect-conditioned pairwise similarity</h3>
+        <p>
+          When an image is the odd-one-out of a triplet conditioned on an aspect, the similarity between the two non-chosen images should intuitively be the greatest. We predict this odd-one-out selection by applying a softmax over the pairwise similarities, and train the embeddings using a cross-entropy loss.
+        </p>
+        <figure class="figure">
+          <img src="static/figures/learning_objectives.jpg" alt="Learning objective figure" class="lo-figure" style="width: 60%" />
+          <figcaption>
+            <strong>Learning similarity from odd-one-out data.</strong> Given this triplet (<em>x<sub>1</sub></em>, <em>x<sub>2</sub></em>, <em>x<sub>3</sub></em>) and "lighting" condition in this example, <em>x<sub>1</sub></em> is the odd-one-out with its warmer lighting. All three image pairs are compared using a similarity function, <em>f<sub>&theta;</sub></em>, conditioned by the aspect (orange arrows). This yields three pairwise similarities <em>s<sub>12</sub></em>, <em>s<sub>13</sub></em>, <em>s<sub>23</sub></em>. A softmax is then applied to these similarities to predict the odd-one-out distribution (<em>y&#770;</em>, pink bar chart). The model is trained by actual human judgements using cross entropy.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== Results =================== -->
+  <section class="section" id="more_results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">More Results</h2>
+
+      <div class="how-subsection">
+        <h3 class="title is-4">Results on our dataset</h3>
+        <p>
+          Across recent open and proprietary vision-language models, embedding models, and
+          activation-difference baselines, TPIPS gives the closest agreement with human
+          aspect-conditioned similarity judgments &mdash; both in-domain (odd-one-out) and
+          out-of-domain (2AFC on real vision-algorithm outputs).
+        </p>
+        <figure class="figure">
+          <img src="static/figures/quantitative_results.jpg" alt="Human agreement bar plot" />
+          <figcaption>
+            <strong>Human agreement.</strong> Ours (red) vs. baselines across
+            early/mid/late fusion families. Left is in-domain, odd-one-out results. Right is out-of-distribution 2AFC results. Error bars are standard error.
+          </figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="static/figures/qualitative_results.jpg" alt="Qualitative comparison" />
+          <figcaption>
+            <strong>Qualitative comparison.</strong>
+            (Left) TPIPS predicts odd-one-out choices that aligns with human's judgement more often that other baselines.
+            (Right) Likewise, TPIPS agrees with human more often for out-of-distribution 2AFC set, too.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="how-subsection">
+        <h3 class="title is-4">Compositional retrieval</h3>
+        <figure class="figure">
+          <img src="static/figures/retrieval_multi_query.jpg" alt="Compositional retrieval" />
+          <figcaption>
+            <strong>Compositional retrieval.</strong> Multiple query images, each with its
+            own aspect, can be combined to retrieve images that satistfy both queries.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== BibTeX =================== -->
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre class="bibtex-block"><code>(coming soon)
+</code></pre>
+    </div>
+  </section>
+
+  <!-- =================== Footer =================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Page template borrowed from
+          <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
+          Source available
+          <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">here</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="static/js/teaser.js"></script>
+  <script src="static/js/aspect_retrieval.js"></script>
+  <script src="static/js/nn.js"></script>
+  <script src="static/js/video_demo.js"></script>
+</body>
+</html>

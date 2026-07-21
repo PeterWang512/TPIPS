@@ -1,0 +1,274 @@
+{
+  "queries": [
+    {
+      "id": 0,
+      "query": "0/query_display.jpg",
+      "rows": [
+        {
+          "slug": "overall",
+          "label": "Overall similarity",
+          "reference": true,
+          "results": [
+            "0/overall/0.jpg",
+            "0/overall/1.jpg",
+            "0/overall/2.jpg",
+            "0/overall/3.jpg",
+            "0/overall/4.jpg"
+          ]
+        },
+        {
+          "slug": "object_size",
+          "label": "Object size",
+          "reference": false,
+          "results": [
+            "0/object_size/0.jpg",
+            "0/object_size/1.jpg",
+            "0/object_size/2.jpg",
+            "0/object_size/3.jpg",
+            "0/object_size/4.jpg"
+          ]
+        },
+        {
+          "slug": "object_color",
+          "label": "Object color",
+          "reference": false,
+          "results": [
+            "0/object_color/0.jpg",
+            "0/object_color/1.jpg",
+            "0/object_color/2.jpg",
+            "0/object_color/3.jpg",
+            "0/object_color/4.jpg"
+          ]
+        },
+        {
+          "slug": "background",
+          "label": "Background",
+          "reference": false,
+          "results": [
+            "0/background/0.jpg",
+            "0/background/1.jpg",
+            "0/background/2.jpg",
+            "0/background/3.jpg",
+            "0/background/4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "query": "1/query_display.jpg",
+      "rows": [
+        {
+          "slug": "overall",
+          "label": "Overall similarity",
+          "reference": true,
+          "results": [
+            "1/overall/0.jpg",
+            "1/overall/1.jpg",
+            "1/overall/2.jpg",
+            "1/overall/3.jpg",
+            "1/overall/4.jpg"
+          ]
+        },
+        {
+          "slug": "composition",
+          "label": "Composition",
+          "reference": false,
+          "results": [
+            "1/composition/0.jpg",
+            "1/composition/1.jpg",
+            "1/composition/2.jpg",
+            "1/composition/3.jpg",
+            "1/composition/4.jpg"
+          ]
+        },
+        {
+          "slug": "weather_condition",
+          "label": "Weather condition",
+          "reference": false,
+          "results": [
+            "1/weather_condition/0.jpg",
+            "1/weather_condition/1.jpg",
+            "1/weather_condition/2.jpg",
+            "1/weather_condition/3.jpg",
+            "1/weather_condition/4.jpg"
+          ]
+        },
+        {
+          "slug": "color_tone",
+          "label": "Color tone",
+          "reference": false,
+          "results": [
+            "1/color_tone/0.jpg",
+            "1/color_tone/1.jpg",
+            "1/color_tone/2.jpg",
+            "1/color_tone/3.jpg",
+            "1/color_tone/4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "query": "2/query_display.jpg",
+      "rows": [
+        {
+          "slug": "overall",
+          "label": "Overall similarity",
+          "reference": true,
+          "results": [
+            "2/overall/0.jpg",
+            "2/overall/1.jpg",
+            "2/overall/2.jpg",
+            "2/overall/3.jpg",
+            "2/overall/4.jpg"
+          ]
+        },
+        {
+          "slug": "camera_viewpoint",
+          "label": "Camera viewpoint",
+          "reference": false,
+          "results": [
+            "2/camera_viewpoint/0.jpg",
+            "2/camera_viewpoint/1.jpg",
+            "2/camera_viewpoint/2.jpg",
+            "2/camera_viewpoint/3.jpg",
+            "2/camera_viewpoint/4.jpg"
+          ]
+        },
+        {
+          "slug": "time_of_day",
+          "label": "Time of day",
+          "reference": false,
+          "results": [
+            "2/time_of_day/0.jpg",
+            "2/time_of_day/1.jpg",
+            "2/time_of_day/2.jpg",
+            "2/time_of_day/3.jpg",
+            "2/time_of_day/4.jpg"
+          ]
+        },
+        {
+          "slug": "weather_condition",
+          "label": "Weather condition",
+          "reference": false,
+          "results": [
+            "2/weather_condition/0.jpg",
+            "2/weather_condition/1.jpg",
+            "2/weather_condition/2.jpg",
+            "2/weather_condition/3.jpg",
+            "2/weather_condition/4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "query": "3/query_display.jpg",
+      "rows": [
+        {
+          "slug": "overall",
+          "label": "Overall similarity",
+          "reference": true,
+          "results": [
+            "3/overall/0.jpg",
+            "3/overall/1.jpg",
+            "3/overall/2.jpg",
+            "3/overall/3.jpg",
+            "3/overall/4.jpg"
+          ]
+        },
+        {
+          "slug": "composition",
+          "label": "Composition",
+          "reference": false,
+          "results": [
+            "3/composition/0.jpg",
+            "3/composition/1.jpg",
+            "3/composition/2.jpg",
+            "3/composition/3.jpg",
+            "3/composition/4.jpg"
+          ]
+        },
+        {
+          "slug": "weather_condition",
+          "label": "Weather condition",
+          "reference": false,
+          "results": [
+            "3/weather_condition/0.jpg",
+            "3/weather_condition/1.jpg",
+            "3/weather_condition/2.jpg",
+            "3/weather_condition/3.jpg",
+            "3/weather_condition/4.jpg"
+          ]
+        },
+        {
+          "slug": "camera_distance",
+          "label": "Camera distance",
+          "reference": false,
+          "results": [
+            "3/camera_distance/0.jpg",
+            "3/camera_distance/1.jpg",
+            "3/camera_distance/2.jpg",
+            "3/camera_distance/3.jpg",
+            "3/camera_distance/4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "query": "4/query_display.jpg",
+      "rows": [
+        {
+          "slug": "overall",
+          "label": "Overall similarity",
+          "reference": true,
+          "results": [
+            "4/overall/0.jpg",
+            "4/overall/1.jpg",
+            "4/overall/2.jpg",
+            "4/overall/3.jpg",
+            "4/overall/4.jpg"
+          ]
+        },
+        {
+          "slug": "composition",
+          "label": "Composition",
+          "reference": false,
+          "results": [
+            "4/composition/0.jpg",
+            "4/composition/1.jpg",
+            "4/composition/2.jpg",
+            "4/composition/3.jpg",
+            "4/composition/4.jpg"
+          ]
+        },
+        {
+          "slug": "background",
+          "label": "Background",
+          "reference": false,
+          "results": [
+            "4/background/0.jpg",
+            "4/background/1.jpg",
+            "4/background/2.jpg",
+            "4/background/3.jpg",
+            "4/background/4.jpg"
+          ]
+        },
+        {
+          "slug": "number_of_objects",
+          "label": "Number of objects",
+          "reference": false,
+          "results": [
+            "4/number_of_objects/0.jpg",
+            "4/number_of_objects/1.jpg",
+            "4/number_of_objects/2.jpg",
+            "4/number_of_objects/3.jpg",
+            "4/number_of_objects/4.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}

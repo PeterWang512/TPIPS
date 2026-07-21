@@ -1,0 +1,1137 @@
+/* ---------- Global ---------- */
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: #1f1f1f;
+  background: #fafafa;
+}
+
+h1.title, h2.title, h3.title, h4.title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+}
+
+a { color: #3273dc; }
+a:hover { color: #1f5db9; }
+
+.math { font-family: 'Castoro', serif; font-style: italic; }
+
+/* Site-wide content width. The teaser and retrieval sections set their own
+   (wider) caps below. */
+.container.is-max-desktop { max-width: 1037px; }
+
+/* ---------- Hero / header ----------
+   Kept intentionally compact so the interactive teaser (images + winner table)
+   is visible above the fold on a fresh browser window. */
+.hero .hero-body { padding: 1.6rem 1.5rem 1rem; }
+
+.publication-title {
+  margin-bottom: 0.9rem !important;
+  line-height: 1.12;
+  font-size: clamp(1.7rem, 4vw, 2.5rem) !important;
+}
+
+.publication-authors {
+  margin-top: 0.25rem;
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem) !important;
+  /* keep the author names / affiliations each on a single row */
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.publication-authors .author-block {
+  margin: 0 0.3rem;
+}
+
+.publication-links {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-wrap: nowrap;           /* keep all buttons on one row */
+  justify-content: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.publication-links .button {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1rem;
+  height: 2.5rem;
+  padding-left: 1.05rem;
+  padding-right: 1.05rem;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.publication-links .icon { margin-right: 0.3rem; }
+
+/* teaser section: compact heading/blurb so the demo starts high on the page */
+#teaser { padding-top: 1rem; }
+/* Teaser is an exception to the site-wide `is-max-desktop` width: let it grow to
+   ~78% of the viewport so the first box dominates the screen, while capping at a
+   width that still fits comfortably on a 13" MacBook (≈1280px viewport). Other
+   sections keep their normal narrower margins. */
+#teaser .container.is-max-desktop {
+  max-width: min(85vw, 1274px);
+  width: 100%;
+}
+#teaser .title.is-3 { font-size: clamp(1.1rem, 2.6vw, 1.5rem); margin-bottom: 0.5rem; }
+#teaser .section-blurb { font-size: 0.92rem; margin-bottom: 0.9rem; }
+
+.publication-blurb {
+  margin-top: 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* ---------- Mobile header ----------
+   On desktop the author list and link buttons deliberately stay on a single
+   row (scrolling if needed). On phones/small tablets that scroll reads as
+   "cut off", so here we let them wrap onto multiple centred rows instead.
+   Desktop (>768px) is unaffected. */
+@media (max-width: 768px) {
+  .publication-authors {
+    white-space: normal;      /* allow the names/affiliations to wrap */
+    overflow-x: visible;
+  }
+  /* keep each author name intact; wrap only between names */
+  .publication-authors .author-block { display: inline-block; }
+
+  .publication-links {
+    flex-wrap: wrap;          /* buttons wrap to multiple rows */
+    overflow-x: visible;
+    gap: 0.5rem 0.6rem;
+  }
+}
+
+/* ---------- Section chrome ---------- */
+.section { padding: 2.5rem 1.5rem; }
+
+.section-blurb {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.section-header-row .title { margin-bottom: 0 !important; }
+
+.hf-demo-chip {
+  font-size: 0.9rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  text-decoration: none;
+  color: #444;
+  white-space: nowrap;
+}
+
+.hf-demo-chip:hover {
+  background: #f5f5f5;
+  color: #222;
+}
+
+.hf-demo-chip .hf-emoji { font-size: 1.05rem; margin: 0 0.15rem; }
+.hf-demo-chip .coming-soon-tag { color: #888; font-style: italic; }
+
+.loading-state {
+  padding: 2rem 0;
+  text-align: center;
+  color: #999;
+}
+
+/* ---------- Figures ---------- */
+.figure {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.figure figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.45;
+  text-align: left;
+  padding: 0 0.5rem;
+}
+
+.how-subsection { margin: 2rem 0; }
+.how-subsection .title.is-4 { margin-bottom: 0.6rem; }
+.how-subsection p { line-height: 1.55; }
+
+/* On phones the learning-objectives diagram (60% wide on desktop) is too small
+   to read, so let it span the full column width. Desktop is unaffected. */
+@media (max-width: 768px) {
+  .lo-figure { width: 100% !important; }
+}
+
+/* ---------- Teaser ---------- */
+.teaser-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: clamp(0.6rem, 3vw, 1.4rem) clamp(0.6rem, 3vw, 1.4rem) clamp(0.8rem, 3.5vw, 1.6rem);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+  margin-bottom: 1.3rem;
+}
+
+/* example carousel: full-width slides (no peek of neighbours) so each example
+   is as large as possible; navigation lives in a control bar below. */
+.teaser-carousel { position: relative; }
+.teaser-viewport {
+  overflow: hidden;
+  padding: 0;
+}
+.teaser-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 480ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.teaser-track.no-anim { transition: none; }
+.teaser-example {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 0;
+  /* visible so the gauge score labels (which float just outside the thin bars)
+     aren't clipped; there's no sliding track anymore to bleed into. */
+  overflow: visible;
+}
+
+/* example-selection bar on top of the card: [‹]  • • •  [›] */
+.teaser-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+.ex-nav-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  color: #333;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+.ex-nav-btn:hover {
+  background: #f5f5f5;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+  transform: scale(1.06);
+}
+
+.ex-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.ex-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: #d5d5d5;
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+.ex-dot:hover { background: #b9b9b9; }
+.ex-dot.is-active { background: #d62728; transform: scale(1.15); }
+
+/* -------- teaser: [reference | A | B | C | ...] grid, two states --------
+   TABLE: header + images, then a "Prior methods" section and an "Our TPIPS"
+   section -- each metric on its own row as a coloured pill (with a tick) under
+   the candidate it picks. PLOT: images stay + zoom, question rewrites, and the
+   metric rows are replaced by a heading + direction + vertical bar chart. */
+.teaser-grid {
+  display: grid;
+  grid-template-columns: minmax(5rem, 1.1fr) repeat(var(--ncand), minmax(0, 1fr));
+  column-gap: 0.5rem;
+  row-gap: 0.4rem;
+  align-items: start;
+  transition: grid-template-columns 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.teaser-grid > * { min-width: 0; }
+@keyframes tbl-in { from { opacity: 0; } to { opacity: 1; } }
+.teaser-grid.is-entering { animation: tbl-in 320ms ease; }
+
+/* phone layout container -- hidden on desktop, shown via the 640px media query */
+.teaser-mobile { display: none; }
+
+/* row 1: reference label (bigger, centred over the reference) + question */
+.tgrid-ref-label {
+  align-self: end;
+  text-align: center;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.28rem);
+  color: #1f1f1f;
+  padding-bottom: 0.15rem;
+}
+.tgrid-title { align-self: end; }
+.tgrid-question {
+  text-align: center;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 2.4vw, 1.3rem);
+  color: #1f1f1f;
+  margin-bottom: 0.2rem;
+}
+.tgrid-question .q-ov { color: #999; }
+@keyframes q-pop { from { opacity: 0.15; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+.tgrid-question.q-anim { animation: q-pop 300ms ease; }
+.tgrid-bracket {
+  height: 0.5rem;
+  border: 2px solid #9a9a9a;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+
+/* row 2: images (winner zooms in both dimensions via the column template) */
+.ref-frame {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 3px solid #333;
+  aspect-ratio: 4 / 3;
+  background: #eee;
+}
+.ref-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cand-thumb {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  aspect-ratio: 4 / 3;
+  background: #eee;
+  transition: opacity 240ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.cand-thumb.is-win { z-index: 2; }   /* zoomed winner sits above its neighbours */
+.cand-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.teaser-grid.has-sel .cand-thumb:not(.is-win) { opacity: 0.5; }
+/* winner border colour is set inline to match the method; neutral shadow here */
+.cand-thumb.is-win { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); }
+/* crossfade a candidate/reference image when swapping examples */
+@keyframes img-swap { from { opacity: 0; } to { opacity: 1; } }
+.cand-thumb img.img-swap, .ref-frame img.img-swap { animation: img-swap 360ms ease both; }
+
+/* ---- candidate cell: image + a vertical bar (image height), score below ---- */
+.cand-cell { display: flex; flex-direction: column; }
+.cand-barrow { display: flex; align-items: stretch; gap: 0.35rem; }
+.cand-barrow .cand-thumb { flex: 1 1 auto; min-width: 0; }
+.cand-gauge {
+  position: relative;
+  flex: 0 0 0.7rem;
+  width: 0.7rem;
+  align-self: stretch;              /* == image height */
+  background: rgba(120, 126, 134, 0.14);
+  border-radius: 4px;
+}
+.cand-gauge-fill {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 0%;
+  border-radius: 4px;
+  background: transparent;          /* empty until a row is hovered */
+  transition: height 520ms cubic-bezier(0.22, 0.61, 0.36, 1), background 200ms ease;
+}
+/* score centred directly under the thin bar (wraps around the gauge column) */
+.cand-gauge-valwrap { align-self: flex-end; width: 0.7rem; display: flex; justify-content: center; margin-top: 0.3rem; }
+.cand-gauge-val {
+  font-family: 'Google Sans', sans-serif;
+  font-size: clamp(0.68rem, 1.5vw, 0.82rem);
+  font-weight: 700;
+  color: #9aa0a6;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  min-height: 1.15em;               /* reserve a line so the empty->filled score doesn't grow the row */
+  transition: color 200ms ease;
+}
+
+/* ---- left columns: group label (horizontal, wrapped) + metric/aspect names ---- */
+.tgrid-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  font-family: 'Google Sans', sans-serif;
+  text-align: center;
+  line-height: 1.16;
+  padding: 0.2rem 0.15rem;
+}
+.tgrid-group .tgg-title { font-weight: 700; font-size: clamp(0.72rem, 1.6vw, 0.9rem); }
+.tgrid-group .tgg-sub { font-weight: 400; font-size: clamp(0.6rem, 1.3vw, 0.72rem); opacity: 0.9; }
+.tgrid-group.is-prior { color: #8a9099; }
+.tgrid-group.is-tpips { color: #14508f; }
+
+/* metric / aspect name tiles: aspects get coloured tiles (set inline), prior
+   methods are gray. Left-aligned with the reference image (col 1). */
+.tgrid-name {
+  justify-self: start;
+  align-self: center;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
+  line-height: 1.2;
+  padding: 0.28rem 0.6rem;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+.tgrid-name.is-prior { background: #eef0f2; border-color: #d5d9de; color: #565b62; }
+.tgrid-name:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14); filter: brightness(0.98); }
+.tgrid-name.is-active { box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2); filter: brightness(0.97); }
+.tgrid-name.is-hidden, .sel-cell.is-hidden { display: none; }
+.name-fade { animation: q-pop 320ms ease; }
+
+/* checkmark beneath the selected image; uniform size, black to match labels */
+.matrix-tick {
+  color: #1f1f1f;
+  font-weight: 900;
+  font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+  line-height: 1;
+  display: inline-block;
+  transition: transform 160ms ease;
+}
+/* hovered row's checkmark is emphasized via transform (doesn't grow the row) */
+.sel-cell.is-active .matrix-tick { transform: scale(1.3); }
+
+/* far-right direction arrow: a tall shaft (image height) with the "more
+   similar" caption above (↑) or below (↓). Shown only while hovering a row. */
+.tgrid-dir {
+  align-self: flex-start;           /* align with the (top-aligned) images */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  padding: 0 0.2rem 0 0.4rem;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.tgrid-dir.is-shown { opacity: 1; }
+.tgrid-dir-arrow {
+  position: relative;
+  flex: 0 0 auto;
+  width: 2px;
+  height: var(--bar-h, 6rem);       /* == non-selected (reference) image height */
+  background: currentColor;         /* colour set inline to match the method */
+}
+.tgrid-dir-arrow.is-up { margin-top: 8px; transform-origin: bottom center; }
+.tgrid-dir-arrow.is-down { margin-bottom: 8px; transform-origin: top center; }
+/* sweep the shaft in when the direction changes, then fade the caption in */
+@keyframes dir-sweep { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.tgrid-dir-arrow.sweep { animation: dir-sweep 380ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+@keyframes dir-cap-in { from { opacity: 0; } to { opacity: 1; } }
+.tgrid-dir-cap.cap-in { animation: dir-cap-in 200ms ease both; animation-delay: 340ms; }
+.tgrid-dir-arrow.is-up::before {
+  content: ""; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-bottom: 8px solid currentColor;
+}
+.tgrid-dir-arrow.is-down::after {
+  content: ""; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%);
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-top: 8px solid currentColor;
+}
+.tgrid-dir-cap { font-size: clamp(0.58rem, 1.3vw, 0.72rem); color: #777; text-align: center; line-height: 1.05; white-space: nowrap; }
+
+/* question: hovering animates only the attribute span, not the whole sentence */
+.tgrid-question .q-asp { font-weight: 800; }
+.tgrid-question .q-asp.q-ov { color: #999; }
+@keyframes qasp-pop { from { opacity: 0.2; transform: translateY(-2px); } to { opacity: 1; transform: none; } }
+.tgrid-question .q-asp.q-anim { display: inline-block; animation: qasp-pop 260ms ease; }
+.cand-label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.25rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* full-width, single-line section headers (one row; buttons live below) */
+.tgrid-head {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  color: #1f1f1f;
+  text-align: left;
+  padding: 0.45rem 0 0.15rem;
+}
+.tgrid-head .th-sub { color: #1f1f1f; font-weight: 400; font-size: 0.85em; }
+.brand-tpips { color: #14508f; }        /* TPIPS -> blue */
+/* extra space above the "Ours" header (in place of the old dashed divider) */
+.tgrid-head.is-tpips { padding-top: 1.1rem; }
+
+/* metric pill buttons, colour set inline (aspects coloured, prior methods
+   gray). Every metric sits on its own row, centred under the candidate it
+   picks -- all buttons the same size. */
+.sel-cell { display: flex; justify-content: center; align-items: flex-start; }
+.sel-btn {
+  display: inline-block;
+  max-width: 100%;
+  font-family: 'Google Sans', sans-serif;
+  font-size: clamp(0.75rem, 1.8vw, 0.92rem);
+  font-weight: 700;
+  line-height: 1.2;
+  border-radius: 14px;
+  padding: 0.26rem 0.7rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  /* long aspect labels wrap inside their column instead of overflowing the
+     slide (which would bleed into the neighbouring carousel example) */
+  white-space: normal;
+  overflow-wrap: break-word;
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+.sel-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14); filter: brightness(0.98); }
+.sel-tick { font-weight: 900; margin-left: 0.25rem; }
+
+/* hint below the table */
+.table-hint {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  font-size: clamp(0.8rem, 1.9vw, 0.95rem);
+  padding: 0.85rem 0 0.1rem;
+  margin-top: 0.4rem;
+  border-top: 1px dashed #ececec;
+}
+
+/* ---------------- PLOT state (vertical bar chart) ---------------- */
+/* heading: TPIPS("aspect") all blue, aspect bold+italic; or plain method name */
+.plot-heading {
+  text-align: center;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.8vw, 1.5rem);
+  margin: 0.4rem 0 0.1rem;
+  animation: q-pop 320ms ease;
+}
+.ph-tpips { color: #14508f; }
+.ph-aspect { color: #14508f; font-weight: 800; font-style: italic; }
+.ph-method { color: #333; font-weight: 800; }
+.plot-dir {
+  text-align: center;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.82rem, 2vw, 1rem);
+  color: #666;
+  margin-bottom: 0.2rem;
+}
+
+/* one bar per candidate, sitting in that candidate's own grid column so it
+   stays centred under its image through the zoom. Bars are a uniform fixed
+   width (independent of the column width), centred in the column. */
+.plot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.9rem 0 0.2rem;
+}
+.plot-barbox { height: clamp(110px, 22vw, 185px); display: flex; align-items: flex-end; }
+.plot-bar {
+  width: clamp(2rem, 6vw, 3rem);
+  height: 0%;
+  position: relative;
+  border-radius: 6px 6px 0 0;
+  transition: height 640ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.plot-val {
+  position: absolute;
+  top: -1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Google Sans', sans-serif;
+  font-size: clamp(0.72rem, 1.7vw, 0.92rem);
+  color: #555;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.plot-tick { font-weight: 900; }
+
+.plot-reset-wrap { text-align: center; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #eee; }
+.teaser-reset {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #fff;
+  background: #333;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+.teaser-reset:hover { background: #1f1f1f; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.26); }
+
+.zoomable { cursor: zoom-in; }
+
+@media (max-width: 760px) {
+  .teaser-grid { column-gap: 0.3rem; row-gap: 0.35rem; }
+  .sel-btn { padding: 0.22rem 0.5rem; gap: 0.2rem; }
+}
+
+/* ================= PHONE: transposed teaser layout ================= */
+@media (max-width: 640px) {
+  /* swap desktop grid for the vertical stack */
+  .teaser-example.is-mobile .teaser-grid { display: none; }
+  .teaser-example.is-mobile .teaser-mobile { display: block; }
+
+  /* two tabs: TPIPS (full name) vs prior methods */
+  .teaser-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+  .tm-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-family: 'Google Sans', sans-serif;
+    color: #555;
+    background: #f2f3f5;
+    border: 1.5px solid #d5d9de;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    text-align: center;
+  }
+  .tm-tab-l1 { font-weight: 800; font-size: 0.92rem; line-height: 1.1; }
+  .tm-tab-l2 { font-weight: 400; font-size: 0.68rem; line-height: 1.15; color: #888; }
+  .tm-tab.is-active {
+    background: #fff;
+    border-color: #14508f;
+    color: #14508f;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
+  }
+  .tm-tab.is-active .tm-tab-l1,
+  .tm-tab.is-active .brand-tpips { color: #14508f; }
+  .tm-tab.is-active .tm-tab-l2 { color: #5a7fa8; }
+
+  /* scrollable button row: the method / aspect selectors. On desktop these are
+     a column of pills down the left of the grid; here they sit on top and scroll
+     horizontally so users can swipe through every visual aspect. */
+  .tm-btnrow {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding: 0.15rem 0.1rem 0.55rem;
+    margin-bottom: 0.15rem;
+  }
+  .tm-btnrow::-webkit-scrollbar { height: 5px; }
+  .tm-btnrow::-webkit-scrollbar-thumb { background: #d4d7db; border-radius: 3px; }
+  .tm-btn {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    border: 1.5px solid transparent;
+    border-radius: 14px;
+    padding: 0.36rem 0.85rem;
+    cursor: pointer;
+    transition: box-shadow 140ms ease, filter 140ms ease, transform 140ms ease;
+  }
+  .tm-btn.is-active {
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.97);
+    transform: translateY(-1px);
+  }
+
+  /* question + direction arrow */
+  .tm-question {
+    text-align: center;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: #1f1f1f;
+    margin: 0.15rem 0 0.35rem;
+  }
+  .tm-question .q-asp { font-weight: 800; }
+  @keyframes tm-qpop { from { opacity: 0.2; } to { opacity: 1; } }
+  .tm-question.q-anim { animation: tm-qpop 260ms ease; }
+
+  /* horizontal "more similar" arrow -- the transposed twin of the desktop
+     far-right vertical arrow. Points right when higher == closer, left for
+     distance metrics. Colour is set inline to match the selected method. */
+  .tm-dir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .tm-dir-cap { white-space: nowrap; }
+  .tm-dir-note { color: #9aa0a6; font-weight: 400; font-size: 0.8rem; white-space: nowrap; }
+  .tm-dir-arrow {
+    position: relative;
+    flex: 0 0 auto;
+    width: 2.6rem;
+    height: 2px;
+    background: currentColor;
+  }
+  .tm-dir-arrow.is-right::after {
+    content: ""; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+    border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+    border-left: 8px solid currentColor;
+  }
+  .tm-dir-arrow.is-left::before {
+    content: ""; position: absolute; left: -1px; top: 50%; transform: translateY(-50%);
+    border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+    border-right: 8px solid currentColor;
+  }
+
+  /* candidate list: reference row (image + label), then one item per candidate
+     with its image and a horizontal similarity bar directly BELOW it. */
+  .tm-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .tm-item.is-ref {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.05rem;
+    border-bottom: 1px dashed #e2e5e9;
+  }
+  .tm-reflabel {
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1f1f1f;
+  }
+
+  .tm-thumb {
+    position: relative;
+    width: clamp(118px, 33vw, 150px);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    aspect-ratio: 4 / 3;
+    background: #eee;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .tm-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tm-item.is-ref .tm-thumb { border-color: #333; border-radius: 8px; }
+  .tm-item.is-win .tm-thumb { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18); }
+
+  /* the bar + score, sitting right under the image */
+  .tm-barline {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.45rem;
+  }
+  .tm-track {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 0.9rem;
+    background: #eef0f2;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .tm-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 640ms cubic-bezier(0.22, 0.61, 0.36, 1), background 200ms ease;
+  }
+  .tm-score {
+    flex: 0 0 auto;
+    min-width: 3.9rem;
+    text-align: right;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #8a9099;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .tm-tick { font-weight: 900; margin-right: 0.1rem; }
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 1000;
+  padding: 2rem;
+}
+.lightbox-overlay.is-open { display: flex; }
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+.lightbox-close {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
+
+.teaser-empty {
+  font-style: italic;
+  color: #999;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* ---------- Video demo ---------- */
+.video-demo-example { text-align: left; }
+.video-demo-title {
+  font-size: 1.05rem;
+  color: #333;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+
+.video-demo-frames-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+  perspective: 1100px;              /* depth for the frame rotate-in on switch */
+}
+/* switching videos rotates only the two frame images in; the rest stays put */
+.video-demo-example.is-switching .video-demo-frame-img {
+  animation: retr-rotate-in 460ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.video-demo-frame-box {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+.video-demo-frame-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  background: #eee;               /* neutral, matching the teaser frames */
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.video-demo-frame-box input[type=range] { width: 100%; }
+
+/* comparison frame: play/pause button sits beside the slider */
+.video-demo-play-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.video-demo-play-row input[type=range] { flex: 1 1 auto; min-width: 0; }
+.video-demo-play-btn {
+  flex: 0 0 auto;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 1px solid #d5d9de;
+  background: #fff;
+  color: #14508f;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+.video-demo-play-btn:hover {
+  background: #f0f5fb;
+  transform: scale(1.06);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+.video-demo-frame-label {
+  display: block;
+  font-size: 0.78rem;
+  color: #777;
+  text-align: center;
+  margin-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* factor chip row + pill buttons -- styled to match the teaser's .sel-btn
+   (these classes are emitted by video_demo.js but had no CSS before) */
+.teaser-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0 0.8rem;
+}
+.aspect-btn {
+  font-family: 'Google Sans', sans-serif;
+  font-size: clamp(0.75rem, 1.8vw, 0.92rem);
+  font-weight: 700;
+  line-height: 1.2;
+  border-radius: 14px;
+  padding: 0.26rem 0.7rem;
+  border: 1.5px solid #d5d9de;
+  background: #eef0f2;
+  color: #565b62;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+.aspect-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14); filter: brightness(0.98); }
+.video-demo-chip { display: inline-flex; align-items: center; gap: 0.35rem; }
+.video-demo-chip.is-active { background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); }
+.video-demo-chip-dot {
+  display: inline-block;
+  width: 0.6rem; height: 0.6rem; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.video-demo-chart-wrap {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+.video-demo-canvas { width: 100%; height: 180px; display: block; }
+
+.video-demo-legend {
+  font-size: 0.78rem;
+  color: #777;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+.video-demo-legend .dot {
+  display: inline-block;
+  width: 0.6rem; height: 0.6rem; border-radius: 50%;
+  margin-right: 0.25rem; vertical-align: middle;
+}
+.video-demo-legend .dot-ref { background: #1f77b4; }
+.video-demo-legend .dot-other { background: #888; }
+
+/* phone: keep reference + comparison frames side-by-side (don't wrap/stack).
+   placed after the base rules above so it wins on equal specificity. */
+@media (max-width: 640px) {
+  .video-demo-frames-row { flex-wrap: nowrap; gap: 0.5rem; }
+  .video-demo-frame-box { min-width: 0; flex: 1 1 0; }
+  .video-demo-canvas { height: 150px; }
+}
+
+/* ---------- BibTeX block ---------- */
+.bibtex-block {
+  background: #6b6b6b;
+  color: #f4f4f4;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  overflow-x: auto;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+}
+.footer p { color: #888; font-size: 0.9rem; }
+
+/* ================= Aspect-conditioned retrieval ================= */
+/* Break out to the same width as the teaser (exception to page margins). */
+#aspect-retrieval .container.is-max-desktop {
+  max-width: min(85vw, 1274px);
+  width: 100%;
+}
+.retrieval-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: clamp(0.7rem, 3vw, 1.3rem);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+  /* shrink to the query + retrieved images so there's no dead space on the
+     right; still centred and capped at the container width. */
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.retrieval-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+.retrieval-controls .ex-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+.retrieval-viewport { overflow: hidden; }
+.retrieval-stage { position: relative; }
+.retrieval-box { min-width: 0; }
+
+/* one row per condition: the query photo is repeated on the left of every row,
+   followed by that row's label + retrieved strip. */
+.retrieval-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  perspective: 1100px;              /* gives the image rotate-in some depth */
+}
+.retrieval-row {
+  display: flex;
+  align-items: flex-start;          /* query lines up with the strip images */
+  gap: clamp(0.6rem, 1.6vw, 1.1rem);
+}
+.retrieval-row.is-reference {
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.1rem;
+  border-bottom: 1px dashed #e2e5e9;
+}
+
+/* left of each row: the query image, sized to match a retrieved image */
+.retrieval-query {
+  flex: 0 0 clamp(96px, 13vw, 172px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+.retrieval-query-img {
+  width: clamp(96px, 13vw, 172px);
+  height: clamp(96px, 13vw, 172px);
+  object-fit: cover;
+  border-radius: 6px;
+  background: #eee;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+.retrieval-query-cap {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.0rem;
+  line-height: 1.5;
+  color: #555;
+  letter-spacing: 0.02em;
+  padding: 0.28rem 0;               /* match the row label's height so images align */
+}
+
+/* right of each row: label above the retrieved strip */
+.retrieval-row-body {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+.retrieval-row-label {
+  align-self: flex-start;
+  color: #fff;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.0rem;
+  line-height: 1.5;
+  text-align: left;
+  padding: 0.28rem 0.55rem;
+  border-radius: 6px;
+}
+.retrieval-strip {
+  align-self: stretch;
+  min-width: 0;
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+}
+.retrieval-result {
+  flex: 0 0 auto;
+  width: clamp(96px, 13vw, 172px);
+  height: clamp(96px, 13vw, 172px);
+  object-fit: cover;
+  border-radius: 6px;
+  background: #eee;
+}
+.retrieval-empty {
+  text-align: center;
+  color: #888;
+  padding: 2rem;
+}
+
+/* query switch: show the query image first, then the retrieved images fade in
+   quickly left-to-right (per-image delay set inline); row labels crossfade.
+   (retr-rotate-in is kept for the video demo's frame swap.) */
+@keyframes retr-rotate-in {
+  from { opacity: 0; transform: perspective(1100px) rotateY(-22deg) scale(0.9); }
+  to   { opacity: 1; transform: perspective(1100px) rotateY(0) scale(1); }
+}
+@keyframes retr-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.retrieval-box.is-switching .retrieval-query-img { animation: retr-fade-in 240ms ease both; }
+.retrieval-box.is-switching .retrieval-row-label { animation: retr-fade-in 320ms ease both; }
+.retrieval-box.is-switching .retrieval-result { animation: retr-fade-in 200ms ease both; }
+/* the "Overall similarity" label is the same for every query -> don't re-fade it */
+.retrieval-box.is-switching .retrieval-row.is-reference .retrieval-row-label { animation: none; }
+
+@media (max-width: 640px) {
+  .retrieval-query { flex: 0 0 clamp(64px, 22vw, 90px); }
+  .retrieval-row { gap: 0.6rem; }
+}
+

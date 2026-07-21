@@ -1,0 +1,248 @@
+{
+  "examples": [
+    {
+      "id": "cow",
+      "title": "cow",
+      "reference": "images/cow_ref.jpg",
+      "reference_label": "Reference image",
+      "aspects": [
+        "subject color",
+        "cow statue pose",
+        "ground surface",
+        "flag pattern"
+      ],
+      "candidates": [
+        {
+          "id": "0",
+          "img": "images/cow_0.jpg",
+          "scores": {
+            "subject color": 0.7776271104812622,
+            "cow statue pose": 0.7514665722846985,
+            "ground surface": 0.6379461288452148,
+            "flag pattern": 0.6747158765792847
+          },
+          "baseline_scores": {
+            "l2": 0.4875672161579132,
+            "ssim": 0.1644873023033142,
+            "lpips": 0.8198350667953491,
+            "dreamsim": 0.3418157696723938
+          }
+        },
+        {
+          "id": "1",
+          "img": "images/cow_1.jpg",
+          "scores": {
+            "subject color": 0.6265637874603271,
+            "cow statue pose": 0.869572639465332,
+            "ground surface": 0.6264601945877075,
+            "flag pattern": 0.6591821908950806
+          },
+          "baseline_scores": {
+            "l2": 0.5517337918281555,
+            "ssim": 0.20381154119968414,
+            "lpips": 0.8365728259086609,
+            "dreamsim": 0.49000000953674316
+          }
+        },
+        {
+          "id": "2",
+          "img": "images/cow_2.jpg",
+          "scores": {
+            "subject color": 0.6365343332290649,
+            "cow statue pose": 0.6964783668518066,
+            "ground surface": 0.8337194919586182,
+            "flag pattern": 0.6531127691268921
+          },
+          "baseline_scores": {
+            "l2": 0.3852591812610626,
+            "ssim": 0.17854861915111542,
+            "lpips": 0.8218164443969727,
+            "dreamsim": 0.5138345956802368
+          }
+        },
+        {
+          "id": "3",
+          "img": "images/cow_3.jpg",
+          "scores": {
+            "subject color": 0.7215485572814941,
+            "cow statue pose": 0.5319985747337341,
+            "ground surface": 0.5875405073165894,
+            "flag pattern": 0.7293028235435486
+          },
+          "baseline_scores": {
+            "l2": 0.5988770127296448,
+            "ssim": 0.20155556499958038,
+            "lpips": 0.9369112253189087,
+            "dreamsim": 0.5051671266555786
+          }
+        }
+      ]
+    },
+    {
+      "id": "car",
+      "title": "car",
+      "reference": "images/car_ref.jpg",
+      "reference_label": "Reference image",
+      "aspects": [
+        "car color",
+        "car design",
+        "car pose",
+        "time of day",
+        "lighting direction"
+      ],
+      "candidates": [
+        {
+          "id": "0",
+          "img": "images/car_0.jpg",
+          "scores": {
+            "car color": 0.8413345813751221,
+            "car design": 0.6309560537338257,
+            "car pose": 0.5843439102172852,
+            "time of day": 0.7868112325668335,
+            "lighting direction": 0.8402121663093567
+          },
+          "baseline_scores": {
+            "l2": 0.5921462178230286,
+            "ssim": 0.1478758454322815,
+            "lpips": 0.7405316829681396,
+            "dreamsim": 0.30944448709487915
+          }
+        },
+        {
+          "id": "1",
+          "img": "images/car_1.jpg",
+          "scores": {
+            "car color": 0.5403527021408081,
+            "car design": 0.7835168838500977,
+            "car pose": 0.718853235244751,
+            "time of day": 0.6951001882553101,
+            "lighting direction": 0.747485339641571
+          },
+          "baseline_scores": {
+            "l2": 0.5118581056594849,
+            "ssim": 0.1658179610967636,
+            "lpips": 0.8383112549781799,
+            "dreamsim": 0.4788990616798401
+          }
+        },
+        {
+          "id": "2",
+          "img": "images/car_2.jpg",
+          "scores": {
+            "car color": 0.5704233646392822,
+            "car design": 0.7277204990386963,
+            "car pose": 0.7932651042938232,
+            "time of day": 0.7172120809555054,
+            "lighting direction": 0.8089982867240906
+          },
+          "baseline_scores": {
+            "l2": 0.5835130214691162,
+            "ssim": 0.15741455554962158,
+            "lpips": 0.7898180484771729,
+            "dreamsim": 0.5742257237434387
+          }
+        },
+        {
+          "id": "3",
+          "img": "images/car_3.jpg",
+          "scores": {
+            "car color": 0.5498696565628052,
+            "car design": 0.6525058746337891,
+            "car pose": 0.7008834481239319,
+            "time of day": 0.859068751335144,
+            "lighting direction": 0.8628149032592773
+          },
+          "baseline_scores": {
+            "l2": 0.5176724195480347,
+            "ssim": 0.16966266930103302,
+            "lpips": 0.7517868876457214,
+            "dreamsim": 0.5241262912750244
+          }
+        }
+      ]
+    },
+    {
+      "id": "building",
+      "title": "building",
+      "reference": "images/building_ref.jpg",
+      "reference_label": "Reference image",
+      "aspects": [
+        "architectural style",
+        "compositional layout",
+        "weather conditions",
+        "time of day",
+        "monochrome style"
+      ],
+      "candidates": [
+        {
+          "id": "0",
+          "img": "images/building_0.jpg",
+          "scores": {
+            "architectural style": 0.8166326284408569,
+            "compositional layout": 0.6846367120742798,
+            "weather conditions": 0.6785032749176025,
+            "time of day": 0.6486300230026245,
+            "monochrome style": 0.668249249458313
+          },
+          "baseline_scores": {
+            "l2": 0.7404807209968567,
+            "ssim": 0.1438109427690506,
+            "lpips": 0.8834136724472046,
+            "dreamsim": 0.4969685673713684
+          }
+        },
+        {
+          "id": "1",
+          "img": "images/building_1.jpg",
+          "scores": {
+            "architectural style": 0.7891937494277954,
+            "compositional layout": 0.7158794403076172,
+            "weather conditions": 0.7097384929656982,
+            "time of day": 0.6550455093383789,
+            "monochrome style": 0.6984845399856567
+          },
+          "baseline_scores": {
+            "l2": 0.6809108257293701,
+            "ssim": 0.17367272078990936,
+            "lpips": 0.8814398050308228,
+            "dreamsim": 0.4212847948074341
+          }
+        },
+        {
+          "id": "2",
+          "img": "images/building_2.jpg",
+          "scores": {
+            "architectural style": 0.8027248382568359,
+            "compositional layout": 0.6681639552116394,
+            "weather conditions": 0.8227872848510742,
+            "time of day": 0.7406663298606873,
+            "monochrome style": 0.7573081254959106
+          },
+          "baseline_scores": {
+            "l2": 0.44774478673934937,
+            "ssim": 0.12048868089914322,
+            "lpips": 0.8882512450218201,
+            "dreamsim": 0.5270508527755737
+          }
+        },
+        {
+          "id": "3",
+          "img": "images/building_3.jpg",
+          "scores": {
+            "architectural style": 0.7231659889221191,
+            "compositional layout": 0.6740074157714844,
+            "weather conditions": 0.7742754220962524,
+            "time of day": 0.8792674541473389,
+            "monochrome style": 0.8867946863174438
+          },
+          "baseline_scores": {
+            "l2": 0.33827969431877136,
+            "ssim": 0.22599190473556519,
+            "lpips": 0.7611759901046753,
+            "dreamsim": 0.5305626392364502
+          }
+        }
+      ]
+    }
+  ]
+}
