@@ -242,7 +242,7 @@
     for (let k = 0; k < maxAspects; k++) aspectSlots.push(makeRow("aspect"));
 
     place(els("div", { class: "table-hint",
-      text: "Hover a method or aspect on the left to see its per-candidate similarity; the closest image is highlighted in blue." }),
+      text: "Hover a method or aspect on the left to see its per-candidate similarity or distance; the closest image is highlighted." }),
       "1 / -1", r); r++;
 
     /* ---- desktop behaviour ---- */
@@ -482,18 +482,19 @@
       });
       mobileWrap.appendChild(btnRow);
 
-      // --- question + direction arrow (rebuilt on each selection) ---
+      // --- question (rebuilt on each selection); the direction arrow is built
+      //     here but appended BELOW the candidate grid further down ---
       const qEl = els("div", { class: "tm-question" });
       const dirEl = els("div", { class: "tm-dir" });
       mobileWrap.appendChild(qEl);
-      mobileWrap.appendChild(dirEl);
 
       // --- candidate list: reference first (no bar), then one row per candidate,
       //     each = image with a horizontal similarity bar directly below it. ---
       const list = els("div", { class: "tm-list" });
+      // reference: label ABOVE the (centred) image, low-profile caption
       list.appendChild(els("div", { class: "tm-item is-ref" }, [
-        mkThumb(`${ROOT_DIR}/${ex.reference}`, "reference image", null),
         els("div", { class: "tm-reflabel", text: ex.reference_label || "Reference image" }),
+        mkThumb(`${ROOT_DIR}/${ex.reference}`, "reference image", null),
       ]));
       const rows = [];
       cands.forEach((cand, i) => {
@@ -508,6 +509,7 @@
         rows.push({ item, thumb, fill, score });
       });
       mobileWrap.appendChild(list);
+      mobileWrap.appendChild(dirEl);   // direction arrow sits below the grid
 
       // fill bars + header for the currently-selected button
       function applyMobile() {
@@ -540,7 +542,7 @@
         const cap = els("span", { class: "tm-dir-cap", text: "more similar" });
         const arrow = els("span", { class: "tm-dir-arrow " + (higher ? "is-right" : "is-left") });
         const note = els("span", { class: "tm-dir-note",
-          text: higher ? "(longer bar = closer)" : "(shorter bar = closer)" });
+          text: higher ? "(larger similarity)" : "(smaller distance)" });
         if (higher) { dirEl.appendChild(cap); dirEl.appendChild(arrow); }
         else { dirEl.appendChild(arrow); dirEl.appendChild(cap); }
         dirEl.appendChild(note);
