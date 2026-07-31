@@ -60,18 +60,18 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span><span>Code (Coming Soon)</span>
+                <a href="https://github.com/adobe-research/TPIPS" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-database"></i></span><span>Data (Coming Soon)</span>
+                <a href="https://huggingface.co/collections/sywang/tpips" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-database"></i></span><span>Models & Dataset</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">&#x1F917;</span><span>Demo (Coming Soon)</span>
+                <a href="https://huggingface.co/spaces/sywang/TPIPS" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#x1F917;</span><span>Demo</span>
                 </a>
               </span>
               <span class="link-block">
@@ -81,10 +81,6 @@
               </span>
             </div>
 
-            <!-- <p class="publication-blurb">
-              We introduce Text-Prompted Image Perceptual Similarity <strong>(TPIPS)</strong>: a similarity metric you can <em>condition on a
-              text-specified visual aspect</em>.
-            </p> -->
           </div>
         </div>
       </div>
@@ -114,9 +110,43 @@
   <!-- =================== Quick Start ====================-->
   <section class="section" id="quick-start">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">"pip install tpips" (Coming Soon!)</h2>
+      <h2 class="title is-3 has-text-centered">Quick Start</h2>
       <p class="section-blurb">
-        pip install package and code release will be out soon. Stay tuned!
+        TPIPS supports Python >=3.10. Install matching PyTorch and torchvision
+        builds from the
+        <a href="https://pytorch.org/get-started/locally/" target="_blank">official PyTorch installer</a>,
+        then install TPIPS:
+      </p>
+
+      <pre class="code-block"><code>pip install tpips</code></pre>
+
+      <p class="section-blurb">
+        You can then use TPIPS to compute aspect-conditioned similarity between two images.
+      </p>
+      <pre class="code-block">
+<code>import torch
+import tpips
+from PIL import Image
+
+model = tpips.load_model("embedding", device="cuda")
+
+image_a = Image.open("a.jpg").convert("RGB")
+image_b = Image.open("b.jpg").convert("RGB")
+
+with torch.inference_mode():
+    similarity = model.similarity(image_a, image_b, factor="lighting")
+    distance = model.distance(image_a, image_b, factor="lighting")
+
+print(similarity.item())  # higher means more similar
+print(distance.item())    # lower means more similar
+</code></pre>
+      <p class="section-blurb">
+      The <code>factor</code> argument is free-form text, specifying the visual aspect that similarity is conditioned on (e.g., "lighting", "the pose of the person", "number of ducks"). Pass <code>factor="overall"</code> (or <code>None</code>, <code>""</code>) for prompt-independent similarity.
+      </p>
+
+      <p class="section-blurb">
+        For model details and the complete API reference, see the
+        <a href="https://github.com/adobe-research/TPIPS/blob/main/DOCUMENTATION.md" target="_blank">TPIPS documentation</a>.
       </p>
     </div>
   </section>
@@ -243,13 +273,18 @@
   <section class="section" id="bibtex">
     <div class="container is-max-desktop content">
       <h2 class="title is-3">BibTeX</h2>
-      <pre class="bibtex-block"><code>@article{wang2026tpips,
-      title={The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric}, 
+      <div class="bibtex-wrap">
+        <button id="bibtex-copy" class="button is-small bibtex-copy-btn" type="button" aria-label="Copy BibTeX to clipboard">
+          <span class="icon"><i class="far fa-copy"></i></span><span>Copy</span>
+        </button>
+        <pre class="bibtex-block"><code id="bibtex-code">@article{wang2026tpips,
+      title={The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric},
       author={Wang, Sheng-Yu and Nitzan, Yotam and Hertzmann, Aaron and Zhu, Jun-Yan and Shechtman, Eli and Efros, Alexei A. and Zhang, Richard},
       journal={arXiv preprint arXiv:2607.18237},
       year={2026}
 }
 </code></pre>
+      </div>
     </div>
   </section>
 
@@ -271,5 +306,49 @@
   <script src="static/js/aspect_retrieval.js"></script>
   <script src="static/js/nn.js"></script>
   <script src="static/js/video_demo.js"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('bibtex-copy');
+      var code = document.getElementById('bibtex-code');
+      if (!btn || !code) return;
+      var label = btn.querySelector('span:last-child');
+      var defaultText = label ? label.textContent : 'Copy';
+      var resetTimer = null;
+
+      function flash(text) {
+        if (label) label.textContent = text;
+        if (resetTimer) clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          if (label) label.textContent = defaultText;
+        }, 1500);
+      }
+
+      btn.addEventListener('click', function () {
+        var text = code.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            flash('Copied!');
+          }, function () {
+            flash('Press Ctrl+C');
+          });
+        } else {
+          // Fallback for older browsers
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+            flash('Copied!');
+          } catch (e) {
+            flash('Press Ctrl+C');
+          }
+          document.body.removeChild(ta);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

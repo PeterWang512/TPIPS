@@ -989,6 +989,9 @@ a:hover { color: #1f5db9; }
 }
 
 /* ---------- BibTeX block ---------- */
+.bibtex-wrap {
+  position: relative;
+}
 .bibtex-block {
   background: #6b6b6b;
   color: #f4f4f4;
@@ -997,6 +1000,45 @@ a:hover { color: #1f5db9; }
   font-size: 0.88rem;
   line-height: 1.45;
   overflow-x: auto;
+}
+.bibtex-copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+.bibtex-copy-btn:hover {
+  opacity: 1;
+}
+
+/* ---------- Quick Start code blocks ---------- */
+#quick-start .section-blurb { text-align: left; }
+.code-block {
+  background: #1e232b;
+  color: #f4f4f4;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 0.6rem 0 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+  font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+.code-block code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+.inline-code {
+  background: #eef0f2;
+  color: #a40052;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
 }
 
 /* ---------- Footer ---------- */
@@ -1009,11 +1051,6 @@ a:hover { color: #1f5db9; }
 .footer p { color: #888; font-size: 0.9rem; }
 
 /* ================= Aspect-conditioned retrieval ================= */
-/* Break out to the same width as the teaser (exception to page margins). */
-#aspect-retrieval .container.is-max-desktop {
-  max-width: min(85vw, 1274px);
-  width: 100%;
-}
 .retrieval-card {
   background: #fff;
   border-radius: 10px;

@@ -41,7 +41,13 @@
     { key: "l2", label: "L2", direction: "lower" },
   ];
 
+  // "overall" is a special aspect: slate accent, and its question drops
+  // "w.r.t." (matches the teaser GIF).
+  const OVERALL_COLOR = { solid: "#334155", tint: "rgba(51, 65, 85, 0.12)" };
+
   // Per-aspect accent colours (still used by the phone layout's pills/bars).
+  // The overall aspect takes OVERALL_COLOR; the remaining aspects draw from
+  // this palette in order.
   const ASPECT_PALETTE = [
     { solid: "#2563eb", tint: "rgba(37, 99, 235, 0.12)" },   // blue
     { solid: "#e07d0c", tint: "rgba(224, 125, 12, 0.14)" },  // orange
@@ -130,10 +136,16 @@
     const baselineItems = BASELINE_METHODS.map(m => ({
       group: "baseline", key: m.key, label: m.label, direction: m.direction,
     }));
-    const aspectItemsFor = ex => (ex.aspects || []).map((a, j) => ({
-      group: "aspect", key: a, label: a, direction: "higher",
-      color: ASPECT_PALETTE[j % ASPECT_PALETTE.length],
-    }));
+    const aspectItemsFor = ex => {
+      let pi = 0;   // palette index for non-overall aspects
+      return (ex.aspects || []).map(a => {
+        const isOverall = a === "overall";
+        const color = isOverall ? OVERALL_COLOR
+          : ASPECT_PALETTE[pi++ % ASPECT_PALETTE.length];
+        return { group: "aspect", key: a, label: a, direction: "higher",
+                 overall: isOverall, color };
+      });
+    };
     const colorOf = item => item.group === "aspect" ? item.color : PRIOR_COLOR;
 
     const CAND_N = (examples[0].candidates || []).length;
@@ -169,7 +181,10 @@
     // the whole sentence isn't redrawn each time.
     const qEl = els("div", { class: "tgrid-question" });
     const qAsp = els("span", { class: "q-asp" });
-    const qWrt = els("span", { class: "q-wrt" }, [document.createTextNode(" w.r.t. "), qAsp]);
+    // lead text before the attribute word: " w.r.t. " for a named aspect,
+    // just " " for the "overall" aspect / prior methods.
+    const qLead = document.createTextNode(" w.r.t. ");
+    const qWrt = els("span", { class: "q-wrt" }, [qLead, qAsp]);
     qWrt.style.display = "none";
     qEl.appendChild(document.createTextNode("Which is more similar to the reference"));
     qEl.appendChild(qWrt);
@@ -250,17 +265,23 @@
     // hovering between two prior methods doesn't redraw the "overall" word)
     let lastQAttrKey = null;
     function updateQuestionAttr(item) {
-      const key = item.group === "aspect" ? "a:" + item.label : "overall";
+      // a named aspect (not "overall") -> "w.r.t. <aspect>"; the overall aspect
+      // and prior methods -> just "overall" (no "w.r.t.").
+      const named = item.group === "aspect" && !item.overall;
+      const key = named ? "a:" + item.label : "overall";
       if (key === lastQAttrKey) return;
       lastQAttrKey = key;
-      if (item.group === "aspect") {
+      if (named) {
+        qLead.textContent = " w.r.t. ";
         qAsp.textContent = item.label;
         qAsp.style.color = item.color.solid;
         qAsp.classList.remove("q-ov");
       } else {
+        qLead.textContent = " ";
         qAsp.textContent = "overall";
-        qAsp.style.color = "";
-        qAsp.classList.add("q-ov");
+        // the overall aspect gets its slate accent; prior methods stay gray.
+        qAsp.style.color = item.overall ? item.color.solid : "";
+        qAsp.classList.toggle("q-ov", !item.overall);
       }
       qWrt.style.display = "";
       qAsp.classList.remove("q-anim"); void qAsp.offsetWidth; qAsp.classList.add("q-anim");
@@ -526,9 +547,14 @@
         // question -- colour the attribute span to match the aspect
         qEl.textContent = "";
         qEl.appendChild(document.createTextNode("Which is more similar to the reference"));
-        if (aspect) {
+        if (aspect && !item.overall) {
           qEl.appendChild(document.createTextNode(" w.r.t. "));
           const a = els("span", { class: "q-asp", text: item.label });
+          a.style.color = solid;
+          qEl.appendChild(a);
+        } else if (item.overall) {
+          qEl.appendChild(document.createTextNode(" "));
+          const a = els("span", { class: "q-asp", text: "overall" });
           a.style.color = solid;
           qEl.appendChild(a);
         }
